@@ -26,7 +26,8 @@ public class BiuBiuMan<T> extends DirectedGame {
 	private int port;
 	private String host;
 	private ChannelFuture f;
-	private boolean isClientStart =false;
+	private boolean isClientStart = false;
+
 	@Override
 	public void create() {
 		// Gdx.app.log("start", "yes");
@@ -50,32 +51,32 @@ public class BiuBiuMan<T> extends DirectedGame {
 		// }
 		// });
 
-		// setScreen(new GroundBattleAction());
-//		host = "192.168.0.120";
-//		port = 18181;
-//		new Thread(new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				runServer(host, port);
-//			}
-//		}).start();
-//		while(!isClientStart){
-//			try {
-//				Thread.sleep(1000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//			if (isClientStart) {
-//				break;
-//			}
-//		}
-////		setScreen(new LoginScreen(this,f.channel()));
+		setScreen(new GroundBattleAction());
+		// host = "192.168.0.120";
+		// port = 18181;
+		// new Thread(new Runnable() {
+		//
+		// @Override
+		// public void run() {
+		// runServer(host, port);
+		// }
+		// }).start();
+		// while(!isClientStart){
+		// try {
+		// Thread.sleep(1000);
+		// } catch (InterruptedException e) {
+		// e.printStackTrace();
+		// }
+		// if (isClientStart) {
+		// break;
+		// }
+		// }
+		//// setScreen(new LoginScreen(this,f.channel()));
 	}
 
 	@Override
 	public void dispose() {
-		Gdx.app.log("dispose", "yes");	
+		Gdx.app.log("dispose", "yes");
 		CommonUtil.dispose();
 	}
 

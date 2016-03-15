@@ -26,7 +26,8 @@ public class GroundBattleAction extends BattleAction {
 	
 	private void initScene() {
 		container = new Stage();
-		Gdx.app.log("random", MathUtils.floor((float) 10.9)+"");
+//		Gdx.app.log("random", MathUtils.floor((float) 10.9)+"");
+		
 	}
 
 	@Override
