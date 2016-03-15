@@ -12,20 +12,20 @@ import com.biubiuman.game.util.Constants;
 
 import sun.print.resources.serviceui;
 
-public class BattleMapBuilder implements Builder{
+public class ObjectBuilder implements Builder{
 	private String TAG = this.getClass().getName();
-	private BattleMapBuilder battleMapBuilder;
+	private ObjectBuilder objectBuilder;
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T createObject(Class<T> c) {
-		T map = null;
+		T object = null;
 		try {
-			map = (T) (Class.forName(c.getName()).newInstance());
+			object = (T) (Class.forName(c.getName()).newInstance());
 		} catch (Exception e) {
-			Gdx.app.error(TAG, "map builer is wrong");
+			Gdx.app.error(TAG, "object builer is wrong");
 		}
-		return map;
+		return object;
 	}
 	
 	
@@ -75,11 +75,11 @@ public class BattleMapBuilder implements Builder{
 	// }
 	// }
 	//
-	public BattleMapBuilder getInstance() {
-		if (battleMapBuilder == null) {
-			battleMapBuilder = new BattleMapBuilder();
+	public ObjectBuilder getInstance() {
+		if (objectBuilder == null) {
+			objectBuilder = new ObjectBuilder();
 		}
-		return battleMapBuilder;
+		return objectBuilder;
 	}
 	//
 	// private void calculateRandomNumber() {
