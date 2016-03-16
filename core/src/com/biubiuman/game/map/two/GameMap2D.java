@@ -5,7 +5,7 @@ import com.badlogic.gdx.utils.Array;
 import com.biubiuman.game.builder.helper.ComposedHelper;
 import com.biubiuman.game.map.GameMap;
 
-public abstract class GameMap2D implements GameMap {
+public abstract class GameMap2D extends GameMap {
 
 	protected Array<ComposedHelper> groundInMap;
 	protected Array<ComposedHelper> wallInMap;

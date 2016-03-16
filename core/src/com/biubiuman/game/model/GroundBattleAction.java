@@ -4,9 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.biubiuman.game.map.two.GrassMap;
 
 public class GroundBattleAction extends BattleAction {
-	
+	private GrassMap grassMap;
 	
 	public GroundBattleAction() {
 	}
@@ -26,6 +27,7 @@ public class GroundBattleAction extends BattleAction {
 	
 	private void initScene() {
 		container = new Stage();
+		grassMap = new GrassMap();
 //		Gdx.app.log("random", MathUtils.floor((float) 10.9)+"");
 		
 	}

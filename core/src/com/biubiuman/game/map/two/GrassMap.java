@@ -9,6 +9,10 @@ import com.biubiuman.game.builder.helper.ComposedHelper;
 import com.biubiuman.game.util.Constants;
 
 public class GrassMap extends GameMap2D {
+	
+	public GrassMap() {
+		initData();
+	}
 
 	@Override
 	public void initData() {
