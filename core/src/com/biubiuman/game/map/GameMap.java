@@ -1,5 +1,10 @@
 package com.biubiuman.game.map;
 
-public interface GameMap {
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+public interface GameMap {
+	
+	public abstract void initData();
+
+	public abstract void drawMap(SpriteBatch batch);
 }

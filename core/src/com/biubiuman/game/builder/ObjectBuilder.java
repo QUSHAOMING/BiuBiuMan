@@ -1,16 +1,7 @@
 package com.biubiuman.game.builder;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.utils.Array;
-import com.biubiuman.game.asset.AssetLoader;
-import com.biubiuman.game.builder.helper.ComposedHelper;
-import com.biubiuman.game.map.GameMap;
-import com.biubiuman.game.util.Constants;
 
-import sun.print.resources.serviceui;
 
 public class ObjectBuilder implements Builder{
 	private String TAG = this.getClass().getName();
@@ -29,10 +20,7 @@ public class ObjectBuilder implements Builder{
 	}
 	
 	
-	// private Array<ComposedHelper> groundInMap;
-	// private Array<ComposedHelper> wallInMap;
-	// private Array<ComposedHelper> ceilingInMap;
-	// private Array<AtlasRegion> groundAssets;
+	
 	// private int mapType;
 	// private int environment;
 	// private int ground;
