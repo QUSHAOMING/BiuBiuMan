@@ -17,7 +17,7 @@ public abstract class BattleAction implements Screen {
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0f, 0.7f, 1f, 1);
+//		Gdx.gl.glClearColor(0f, 0f, 0f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		// if (Gdx.input.isTouched()) {
 		// Gdx.app.log("fisrt", Gdx.input.getX(1) + " , " + Gdx.input.getY(1));

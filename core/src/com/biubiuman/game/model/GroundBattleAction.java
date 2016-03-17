@@ -28,6 +28,7 @@ public class GroundBattleAction extends BattleAction {
 	private void initScene() {
 		container = new Stage();
 		grassMap = new GrassMap();
+		container.addActor(grassMap);
 //		Gdx.app.log("random", MathUtils.floor((float) 10.9)+"");
 		
 	}
@@ -35,7 +36,8 @@ public class GroundBattleAction extends BattleAction {
 	@Override
 	public void render(float delta) {
 		super.render(delta);
-		
+		container.act();
+		container.draw();
 	}
 	
 	

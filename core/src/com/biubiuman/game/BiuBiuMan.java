@@ -21,7 +21,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
-public class BiuBiuMan<T> extends DirectedGame {
+public class BiuBiuMan extends DirectedGame {
 
 	private int port;
 	private String host;

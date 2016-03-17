@@ -1,6 +1,6 @@
 package com.biubiuman.game.map.two;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -10,10 +10,6 @@ import com.biubiuman.game.util.Constants;
 
 public class GrassMap extends GameMap2D {
 	
-	public GrassMap() {
-		initData();
-	}
-
 	@Override
 	public void initData() {
 		groundAssets = new Array<AtlasRegion>();
@@ -23,10 +19,10 @@ public class GrassMap extends GameMap2D {
 	}
 
 	@Override
-	public void drawMap(SpriteBatch batch) {
+	public void drawMap(Batch batch) {
 		for (int i = 0; i < Constants.MAX_WIDTH; i++) {
 			 ComposedHelper tempGround = new ComposedHelper(groundAssets);
-			 tempGround.drawComposedEntity(batch, Constants.MAX_WIDTH, Constants.LEFT_RIGHT, new Vector2(0, 0),
+			 tempGround.drawComposedEntity(batch, Constants.MAX_WIDTH-2, Constants.LEFT_RIGHT, new Vector2(0, 0),
 			 0);
 		}
 	}
