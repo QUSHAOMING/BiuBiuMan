@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 
 public class ObjectBuilder implements Builder{
 	private String TAG = this.getClass().getName();
-	private ObjectBuilder objectBuilder;
+	private static ObjectBuilder objectBuilder;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -63,7 +63,7 @@ public class ObjectBuilder implements Builder{
 	// }
 	// }
 	//
-	public ObjectBuilder getInstance() {
+	public static ObjectBuilder getInstance() {
 		if (objectBuilder == null) {
 			objectBuilder = new ObjectBuilder();
 		}
