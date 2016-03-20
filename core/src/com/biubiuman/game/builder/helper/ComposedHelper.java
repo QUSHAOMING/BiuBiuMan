@@ -59,6 +59,7 @@ public class ComposedHelper {
 		area = tempArea;
 		this.position = position;
 	}
+	
 
 	public Vector2 getPosition() {
 		return position;

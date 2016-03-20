@@ -1,5 +1,7 @@
 package com.biubiuman.game.asset;
 
+import java.util.Map;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
@@ -47,6 +49,7 @@ public class AssetLoader implements Disposable, AssetErrorListener {
 		groundAsset = new GroundAsset(atlas);
 		herosAsset = new HerosAsset(atlas);
 		iconAsset = new IconAsset(atlas);
+
 	}
 
 	@Override
@@ -85,14 +88,21 @@ public class AssetLoader implements Disposable, AssetErrorListener {
 	}
 
 	public class HerosAsset {
-		private Array<AtlasRegion> heros;
+		private Map<String, Array<AtlasRegion>> allHeros;
 
 		public HerosAsset(TextureAtlas atlas) {
-			heros = atlas.findRegions("hero");
+			allHeros.put("hero1", atlas.findRegions("hero1"));
+			allHeros.put("hero2", atlas.findRegions("hero2"));
+			allHeros.put("hero3", atlas.findRegions("hero3"));
+
 		}
 
-		public Array<AtlasRegion> getHeros() {
-			return heros;
+		public Map<String, Array<AtlasRegion>> getAllHeros() {
+			return allHeros;
+		}
+
+		public void setAllHeros(Map<String, Array<AtlasRegion>> allHeros) {
+			this.allHeros = allHeros;
 		}
 
 	}
