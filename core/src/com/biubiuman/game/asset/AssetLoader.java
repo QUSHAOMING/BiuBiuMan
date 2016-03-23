@@ -13,20 +13,19 @@ import com.badlogic.gdx.utils.Disposable;
 import com.biubiuman.game.util.Constants;
 
 /**
- * the resource loader
+ * the resource loader which is Singleton
  * 
- * @author Kimitur
- *
+ * @author Kimi
+ * 
  */
 public class AssetLoader implements Disposable, AssetErrorListener {
 	private static AssetLoader assetLoader;
 	private AssetManager assetManager;
-	private GroundAsset groundAsset;
-	private HerosAsset herosAsset;
-	private IconAsset iconAsset;
+	public GroundAsset groundAsset;
+	public HerosAsset herosAsset;
+	public IconAsset iconAsset;
 
 	public AssetLoader() {
-		initParam();
 	}
 
 	public static AssetLoader getInstance() {
@@ -36,19 +35,27 @@ public class AssetLoader implements Disposable, AssetErrorListener {
 		return assetLoader;
 	}
 
-	private void initParam() {
+	/**
+	 * Accroding to the path to init the resource we need
+	 * 
+	 * @param path
+	 */
+	public void initParam(String path) {
 		assetManager = new AssetManager();
 		// start load the textures
-		assetManager.load(Constants.GROUND_PACK, TextureAtlas.class);
+		assetManager.load(path, TextureAtlas.class);
 
 		// finish loading
 		assetManager.finishLoading();
 
-		TextureAtlas atlas = assetManager.get(Constants.GROUND_PACK);
-
-		groundAsset = new GroundAsset(atlas);
-		herosAsset = new HerosAsset(atlas);
-		iconAsset = new IconAsset(atlas);
+		TextureAtlas atlas = assetManager.get(path);
+		if (path.equals(Constants.GROUND_PACK)) {
+			groundAsset = new GroundAsset(atlas);
+		} else if (path.equals(Constants.HERO_PACK)) {
+			herosAsset = new HerosAsset(atlas);
+		} else if (path.equals(Constants.ICON_PACK)) {
+			iconAsset = new IconAsset(atlas);
+		}
 
 	}
 
@@ -60,35 +67,24 @@ public class AssetLoader implements Disposable, AssetErrorListener {
 
 	@Override
 	public void error(AssetDescriptor asset, Throwable throwable) {
-		Gdx.app.error("Asset error", "The file couldn't be loaded" + asset.fileName);
+		Gdx.app.error("Asset error", "The file couldn't be loaded"
+				+ asset.fileName);
 	}
 
 	public class GroundAsset {
-		private AtlasRegion lgrass;
-		private AtlasRegion mgrass;
-		private AtlasRegion rgrass;
+		public AtlasRegion lgrass;
+		public AtlasRegion mgrass;
+		public AtlasRegion rgrass;
 
 		public GroundAsset(TextureAtlas atlas) {
 			lgrass = atlas.findRegion("lgrass");
 			mgrass = atlas.findRegion("mgrass");
 			rgrass = atlas.findRegion("rgrass");
 		}
-
-		public AtlasRegion getLgrass() {
-			return lgrass;
-		}
-
-		public AtlasRegion getMgrass() {
-			return mgrass;
-		}
-
-		public AtlasRegion getRgrass() {
-			return rgrass;
-		}
 	}
 
 	public class HerosAsset {
-		private Map<String, Array<AtlasRegion>> allHeros;
+		public Map<String, Array<AtlasRegion>> allHeros;
 
 		public HerosAsset(TextureAtlas atlas) {
 			allHeros.put("hero1", atlas.findRegions("hero1"));
@@ -97,39 +93,13 @@ public class AssetLoader implements Disposable, AssetErrorListener {
 
 		}
 
-		public Map<String, Array<AtlasRegion>> getAllHeros() {
-			return allHeros;
-		}
-
-		public void setAllHeros(Map<String, Array<AtlasRegion>> allHeros) {
-			this.allHeros = allHeros;
-		}
-
 	}
 
 	public class IconAsset {
-		private AtlasRegion selectHeroIcon;
+		public AtlasRegion selectHeroIcon;
 
 		public IconAsset(TextureAtlas atlas) {
 			selectHeroIcon = atlas.findRegion("hero");
 		}
-
-		public AtlasRegion getSelectHeroIcon() {
-			return selectHeroIcon;
-		}
-
 	}
-
-	public GroundAsset getGroundAsset() {
-		return groundAsset;
-	}
-
-	public HerosAsset getHerosAsset() {
-		return herosAsset;
-	}
-
-	public IconAsset getIconAsset() {
-		return iconAsset;
-	}
-
 }

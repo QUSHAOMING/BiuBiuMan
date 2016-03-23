@@ -9,13 +9,13 @@ import com.biubiuman.game.builder.helper.ComposedHelper;
 import com.biubiuman.game.util.Constants;
 
 public class GrassMap extends GameMap2D {
-	
 	@Override
 	public void initData() {
-		groundAssets = new Array<AtlasRegion>();
-		groundAssets.add(AssetLoader.getInstance().getGroundAsset().getLgrass());
-		groundAssets.add(AssetLoader.getInstance().getGroundAsset().getMgrass());
-		groundAssets.add(AssetLoader.getInstance().getGroundAsset().getRgrass());
+		super.initData();
+		AssetLoader.getInstance().initParam(Constants.GROUND_PACK);
+		groundAssets.add(AssetLoader.getInstance().groundAsset.lgrass);
+		groundAssets.add(AssetLoader.getInstance().groundAsset.mgrass);
+		groundAssets.add(AssetLoader.getInstance().groundAsset.rgrass);
 	}
 
 	@Override

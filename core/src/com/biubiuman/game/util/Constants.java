@@ -1,11 +1,30 @@
 package com.biubiuman.game.util;
 
+/**
+ * this is the class for all static constant
+ * 
+ * @author kimi
+ * 
+ */
 public class Constants {
-	// game size
+	// GAME WIDTH
 	public static int GAME_WIDTH = 800;
-
+	// GAME WIDTH
 	public static int GAME_HEIGHT = 480;
 
+	/**
+	 * image adress
+	 */
+	// UI image resources
+	public static String UI_PACK = "images/ui.pack";
+	// ground image resources
+	public static String GROUND_PACK = "images/grounds.pack";
+	// hero image resources
+	public static String HERO_PACK = "images/heros.pack";
+	// icon image resources
+	public static String ICON_PACK = "images/icons.pack";
+	
+	// AFTER
 	// btn
 	public static int LOGIN_BTN = 0;
 
@@ -40,10 +59,6 @@ public class Constants {
 	// Json address
 	public static String JSON = "jsons/init.json";
 
-	// image adress
-	public static String UI_PACK = "images/ui.pack";
-	public static String GROUND_PACK = "images/ground.pack";
-
 	// preference address
 	public static String PREFERENCE = "userdata";
 
@@ -52,43 +67,42 @@ public class Constants {
 
 	public static boolean isShowIcon = false;
 
-	// the ground type
-	public static int GROUND_PLAIN = 0;
+	// BEFORE
 
-	public static int GROUND_WATER = 1;
-
-	public static int GROUND_MOUNTAIN = 2;
-
-	public static int GROUND_THORN = 3;
-
-	// the environment type
-	public static int EN_COMMON = 0;
-
-	public static int EN_WATER = 1;
-
-	public static int EN_HOT = 2;
-
-	public static int EN_FOG = 3;
-
-	public static int EN_RAIN = 4;
-
-	public static int EN_ICE = 5;
 	// sort type
 	public static int LEFT_RIGHT = 0;
+
 	public static int MIDDLE_HORIZONTAL = 1;
+
 	public static int RIGHT_LEFT = 2;
+
 	public static int TOP_BOTTOM = 3;
+
 	public static int MIDDLE_VERTICAL = 4;
+
 	public static int BOTTOM_TOP = 5;
 
 	// Map type
 	public static int MAP_GRASS = 0;
 	// MAX GAME BLOCK NUMBER
 	public static int MAX_HEIGHT = 40;
+
 	public static int MAX_WIDTH = 50;
 	// MAX GAME EMPTY NUMBER
 	public static int MAX_EMPTY = 5;
 	// MAX GAME TRAP NUMBER
 	public static int MAX_TRAP = 5;
+
+	public static int MAP_TYPE_EMPTY = 0;
+
+	public static int MAP_TYPE_LAND = 1;
+
+	public static int MAP_TYPE_WATER = 2;
+
+	public static int MAP_TYPE_WALL = 3;
+
+	public static int MAP_TYPE_CELLING = 4;
+
+	public static int MAP_TYPE_BLOCK = 5;
 
 }

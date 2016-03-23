@@ -8,9 +8,7 @@ import com.biubiuman.game.util.Constants;
 
 public class ComposedHelper {
 	private Array<AtlasRegion> atlasRegions;
-	private Vector2 position;
-	private Vector2 area;
-
+	
 	public ComposedHelper() {
 	}
 
@@ -56,25 +54,6 @@ public class ComposedHelper {
 					temp.get(2).getRegionHeight(), 1, 1, rotation);
 
 		}
-		area = tempArea;
-		this.position = position;
 	}
 	
-
-	public Vector2 getPosition() {
-		return position;
-	}
-
-	public void setPosition(Vector2 position) {
-		this.position = position;
-	}
-
-	public Vector2 getArea() {
-		return area;
-	}
-
-	public void setArea(Vector2 area) {
-		this.area = area;
-	}
-
 }
