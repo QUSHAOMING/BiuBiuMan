@@ -3,6 +3,7 @@ package com.biubiuman.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Interpolation;
+import com.biubiuman.game.builder.ObjectBuilder;
 import com.biubiuman.game.model.FlyBattleAction;
 import com.biubiuman.game.model.GroundBattleAction;
 import com.biubiuman.game.screen.LoadingScreen;
@@ -51,7 +52,7 @@ public class BiuBiuMan extends DirectedGame {
 		// }
 		// });
 
-		setScreen(new GroundBattleAction());
+		setScreen(ObjectBuilder.getInstance().createObject(GroundBattleAction.class));
 		// host = "192.168.0.120";
 		// port = 18181;
 		// new Thread(new Runnable() {

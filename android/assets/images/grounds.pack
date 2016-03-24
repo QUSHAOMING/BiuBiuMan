@@ -3,21 +3,21 @@ grounds.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-lgrass
+L
   rotate: false
   xy: 1, 1
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: -1
-mgrass
+M
   rotate: false
   xy: 53, 1
   size: 50, 50
   orig: 50, 50
   offset: 0, 0
   index: -1
-rgrass
+R
   rotate: false
   xy: 105, 1
   size: 50, 50

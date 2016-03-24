@@ -1,13 +1,12 @@
 package com.biubiuman.game.model;
 
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.biubiuman.game.builder.ObjectBuilder;
-import com.biubiuman.game.map.GameMap;
+import com.biubiuman.game.map.two.GameMap2D;
 import com.biubiuman.game.map.two.GrassMap;
 
 public class GroundBattleAction extends BattleAction {
-	private GameMap map;
-	
+	private GameMap2D map;
+
 	public GroundBattleAction() {
 	}
 
@@ -15,26 +14,24 @@ public class GroundBattleAction extends BattleAction {
 
 	}
 
-
-
 	@Override
 	public void show() {
-		initScene();
+		super.show();
 	}
-	
-	private void initScene() {
-		container = new Stage();
+
+	@Override
+	protected void initScene() {
+		super.initScene();
 		map = ObjectBuilder.getInstance().createObject(GrassMap.class);
-		container.addActor((GrassMap)map);
-		
+		container.addActor((GrassMap) map);
 	}
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 		container.act();
+		map.getMapRenderer().setView(camera);
 		container.draw();
 	}
-	
-	
+
 }

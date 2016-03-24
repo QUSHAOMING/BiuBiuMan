@@ -13,7 +13,7 @@ public class Constants {
 	public static int GAME_HEIGHT = 480;
 
 	/**
-	 * image adress
+	 * image address
 	 */
 	// UI image resources
 	public static String UI_PACK = "images/ui.pack";
@@ -24,6 +24,11 @@ public class Constants {
 	// icon image resources
 	public static String ICON_PACK = "images/icons.pack";
 	
+	/**
+	 * map address
+	 */
+	// map01
+	public static String MAP_01= "maps/map01.tmx";
 	// AFTER
 	// btn
 	public static int LOGIN_BTN = 0;
