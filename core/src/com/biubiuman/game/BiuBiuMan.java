@@ -13,6 +13,7 @@ import com.biubiuman.game.screen.rtt.ScreenTransitionFade;
 import com.biubiuman.game.screen.rtt.ScreenTransitionSlice;
 import com.biubiuman.game.screen.rtt.ScreenTransitionSlide;
 import com.biubiuman.game.util.CommonUtil;
+import com.biubiuman.game.util.Constants;
 import com.biubiuman.net.handler.HandlerIniter;
 
 import io.netty.bootstrap.Bootstrap;
@@ -52,7 +53,7 @@ public class BiuBiuMan extends DirectedGame {
 		// }
 		// });
 
-		setScreen(ObjectBuilder.getInstance().createObject(GroundBattleAction.class));
+		setScreen(new GroundBattleAction(Constants.GROUND_GRASS));
 		// host = "192.168.0.120";
 		// port = 18181;
 		// new Thread(new Runnable() {
@@ -72,7 +73,7 @@ public class BiuBiuMan extends DirectedGame {
 		// break;
 		// }
 		// }
-		//// setScreen(new LoginScreen(this,f.channel()));
+		// // setScreen(new LoginScreen(this,f.channel()));
 	}
 
 	@Override
@@ -85,7 +86,8 @@ public class BiuBiuMan extends DirectedGame {
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
 		try {
 			Bootstrap b = new Bootstrap();
-			b.group(workerGroup).channel(NioSocketChannel.class).option(ChannelOption.SO_KEEPALIVE, true)
+			b.group(workerGroup).channel(NioSocketChannel.class)
+					.option(ChannelOption.SO_KEEPALIVE, true)
 					.handler(new HandlerIniter());
 			f = b.connect(host, port).sync();
 			if (f.isSuccess()) {

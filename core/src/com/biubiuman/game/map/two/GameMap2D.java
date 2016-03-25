@@ -10,14 +10,12 @@ import com.biubiuman.game.map.GameMap;
 
 public abstract class GameMap2D extends GameMap {
 
-	protected Array<AtlasRegion> groundAssets;
 	protected TmxMapLoader mapLoader;
 	protected TiledMapRenderer mapRenderer;
 	protected TiledMap map;
 
 	@Override
 	public void initData() {
-		groundAssets = new Array<AtlasRegion>();
 		mapLoader = new TmxMapLoader();
 	}
 

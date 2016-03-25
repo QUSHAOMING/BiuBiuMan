@@ -76,11 +76,13 @@ public class AssetLoader implements Disposable, AssetErrorListener {
 		public AtlasRegion lgrass;
 		public AtlasRegion mgrass;
 		public AtlasRegion rgrass;
-
+		public AtlasRegion egrass;
+		
 		public GroundAsset(TextureAtlas atlas) {
 			lgrass = atlas.findRegion("L");
 			mgrass = atlas.findRegion("M");
 			rgrass = atlas.findRegion("R");
+			egrass = atlas.findRegion("E");
 		}
 	}
 

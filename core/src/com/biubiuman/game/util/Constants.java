@@ -12,7 +12,7 @@ public class Constants {
 	// GAME HEIGHT
 	public static int GAME_HEIGHT = 480;
 
-	/**
+	/*
 	 * image address
 	 */
 	// UI image resources
@@ -23,12 +23,33 @@ public class Constants {
 	public static String HERO_PACK = "images/heros.pack";
 	// icon image resources
 	public static String ICON_PACK = "images/icons.pack";
-	
-	/**
+
+	/*
+	 * ground map type
+	 */
+	public static int GROUND_GRASS = 0;
+	/*
 	 * map address
 	 */
 	// map01
-	public static String MAP_01= "maps/map01.tmx";
+	public static String MAP_01 = "maps/map01.tmx";
+
+	/*
+	 * MAX MAP SIZE
+	 */
+	public static int MAX_HEIGHT = 40;
+
+	public static int MAX_WIDTH = 50;
+
+	/*
+	 * horizental speed and jump high and gravity 
+	 */
+	public static float speed = 10;
+	
+	public static float jumpHigh = 20;
+	
+	public static float gravity = 10;
+	
 	// AFTER
 	// btn
 	public static int LOGIN_BTN = 0;
@@ -73,41 +94,5 @@ public class Constants {
 	public static boolean isShowIcon = false;
 
 	// BEFORE
-
-	// sort type
-	public static int LEFT_RIGHT = 0;
-
-	public static int MIDDLE_HORIZONTAL = 1;
-
-	public static int RIGHT_LEFT = 2;
-
-	public static int TOP_BOTTOM = 3;
-
-	public static int MIDDLE_VERTICAL = 4;
-
-	public static int BOTTOM_TOP = 5;
-
-	// Map type
-	public static int MAP_GRASS = 0;
-	// MAX GAME BLOCK NUMBER
-	public static int MAX_HEIGHT = 40;
-
-	public static int MAX_WIDTH = 50;
-	// MAX GAME EMPTY NUMBER
-	public static int MAX_EMPTY = 5;
-	// MAX GAME TRAP NUMBER
-	public static int MAX_TRAP = 5;
-
-	public static int MAP_TYPE_EMPTY = 0;
-
-	public static int MAP_TYPE_LAND = 1;
-
-	public static int MAP_TYPE_WATER = 2;
-
-	public static int MAP_TYPE_WALL = 3;
-
-	public static int MAP_TYPE_CELLING = 4;
-
-	public static int MAP_TYPE_BLOCK = 5;
 
 }
