@@ -1,11 +1,9 @@
 package com.biubiuman.game.model;
 
-import com.biubiuman.game.builder.ObjectBuilder;
-import com.biubiuman.game.map.two.GameMap2D;
 import com.biubiuman.game.map.two.GrassMap;
+import com.biubiuman.game.role.Player;
 
 public class GroundBattleAction extends BattleAction {
-	private GameMap2D map;
 
 	public GroundBattleAction() {
 	}
@@ -16,21 +14,13 @@ public class GroundBattleAction extends BattleAction {
 
 	@Override
 	public void show() {
-		super.show();
-	}
-
-	@Override
-	protected void initScene() {
-		super.initScene();
-		map = ObjectBuilder.getInstance().createObject(GrassMap.class);
-		container.addActor((GrassMap) map);
+		initScene(new GrassMap(), new Player());
 	}
 
 	@Override
 	public void render(float delta) {
 		super.render(delta);
 		container.act();
-		map.getMapRenderer().setView(camera);
 		container.draw();
 	}
 

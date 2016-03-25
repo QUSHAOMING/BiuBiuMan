@@ -9,7 +9,7 @@ package com.biubiuman.game.util;
 public class Constants {
 	// GAME WIDTH
 	public static int GAME_WIDTH = 800;
-	// GAME WIDTH
+	// GAME HEIGHT
 	public static int GAME_HEIGHT = 480;
 
 	/**

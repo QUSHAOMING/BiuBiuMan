@@ -1,5 +1,6 @@
 package com.biubiuman.game.asset;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
@@ -87,9 +88,10 @@ public class AssetLoader implements Disposable, AssetErrorListener {
 		public Map<String, Array<AtlasRegion>> allHeros;
 
 		public HerosAsset(TextureAtlas atlas) {
+			allHeros = new HashMap<String, Array<AtlasRegion>>();
 			allHeros.put("hero1", atlas.findRegions("hero1"));
-			allHeros.put("hero2", atlas.findRegions("hero2"));
-			allHeros.put("hero3", atlas.findRegions("hero3"));
+//			allHeros.put("hero2", atlas.findRegions("hero2"));
+//			allHeros.put("hero3", atlas.findRegions("hero3"));
 
 		}
 

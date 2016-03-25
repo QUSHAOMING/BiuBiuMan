@@ -37,4 +37,5 @@ public class FlyBattleAction extends BattleAction {
 		super.dispose();
 	}
 
+
 }

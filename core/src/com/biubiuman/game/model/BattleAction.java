@@ -5,34 +5,49 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapLayers;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.biubiuman.game.asset.AssetLoader;
 import com.biubiuman.game.builder.ObjectBuilder;
 import com.biubiuman.game.builder.helper.CameraHelper;
+import com.biubiuman.game.map.GameMap;
+import com.biubiuman.game.map.two.GameMap2D;
 import com.biubiuman.game.map.two.GrassMap;
+import com.biubiuman.game.map.twohalf.GameMap2Dot5D;
+import com.biubiuman.game.role.GameRole;
+import com.biubiuman.game.role.Player;
+import com.biubiuman.game.util.Constants;
 
 public abstract class BattleAction implements Screen {
 	protected Stage container;
-	protected Image bgImg;
-	private boolean pause;
 	protected OrthographicCamera camera;
-
+	protected GameRole player;
+	protected GameMap map;
+	protected boolean pause;
+	protected  int[][] barriers;
+	
+	
 	@Override
 	public void show() {
-		initScene();
 	}
 
 	@Override
 	public void render(float delta) {
-		handleInput();
-		// Gdx.gl.glClearColor(0f, 0f, 0f, 1);
+		Gdx.gl.glClearColor(0.3f, 0.3f, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		// if (Gdx.input.isTouched()) {
-		// Gdx.app.log("fisrt", Gdx.input.getX(1) + " , " + Gdx.input.getY(1));
-		//
-		// Gdx.app.log("second", Gdx.input.getX(2) + " , " + Gdx.input.getY(2));
-		// }
+		handleInput();
+		if (map instanceof GameMap2D) {
+			((GameMap2D) map).getMapRenderer().setView(camera);
+			((GameMap2D) map).getMapRenderer().render();
+		} else if (map instanceof GameMap2Dot5D) {
+
+		}
 	}
 
 	@Override
@@ -61,9 +76,50 @@ public abstract class BattleAction implements Screen {
 		AssetLoader.getInstance().dispose();
 	}
 
-	protected void initScene() {
+	protected void initScene(GameMap m, GameRole p) {
 		container = new Stage();
-		camera = CameraHelper.getInstance().createCamera();
+		camera = (OrthographicCamera) container.getCamera();
+		CameraHelper.getInstance().initCamera(camera);
+		barriers = new int[Constants.MAX_HEIGHT][Constants.MAX_WIDTH];
+		map = m;
+		player = p;
+		container.addActor(map);
+		container.addActor(player);
+		setBarriers();
+	}
+
+	public void setBarriers() {
+		if (map instanceof GrassMap) {
+			MapLayers layers = ((GrassMap) map).getMap().getLayers();
+
+			for (MapLayer layer : layers) {//
+				if (layer.getName().equals("Players")) {//
+					MapObjects objs = layer.getObjects();
+					for (MapObject obj : objs) {//
+						if (obj.getName().equals("me")) {//
+							RectangleMapObject rmobj = (RectangleMapObject) obj;
+							player.currentX = rmobj.getRectangle().x;
+							player.currentY = rmobj.getRectangle().y;
+							break;
+						}
+					}
+				}
+
+				if (layer.getName().equals("Map")) {//
+					if (layer instanceof TiledMapTileLayer) {//
+						TiledMapTileLayer tlayer = (TiledMapTileLayer) layer;
+						for (int x = 0; x < Constants.MAX_HEIGHT; x++) {
+							for (int y = 0; y < Constants.MAX_WIDTH; y++) {
+								if (tlayer.getCell(y, x) != null) {
+									barriers[x][y] = 1;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
 	}
 
 	public void handleInput() {
@@ -74,18 +130,19 @@ public abstract class BattleAction implements Screen {
 			camera.zoom -= 1;
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-			camera.translate(-50, 0, 0);
+			player.currentX -= 10;
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-			camera.translate(50, 0, 0);
+			player.currentX += 10;
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-			camera.translate(0, -50, 0);
+			player.currentY -= 10;
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-			camera.translate(0, 50, 0);
+			player.currentY += 10;
 		}
-		camera.update();
+		CameraHelper.getInstance().lockTheRole(camera, player.currentX,
+				player.currentY);
 	}
 
 }

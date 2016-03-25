@@ -19,4 +19,20 @@ public class CameraHelper {
 		return camera;
 	}
 
+	public void initCamera(OrthographicCamera camera) {
+		camera.viewportHeight = Constants.GAME_HEIGHT;
+		camera.viewportWidth = Constants.GAME_WIDTH;
+	}
+
+	public void translateCamera(OrthographicCamera camera, float x, float y) {
+		camera.translate(x, y);
+		camera.update();
+	}
+
+	public void lockTheRole(OrthographicCamera camera, float x, float y) {
+		camera.position.x = x;
+		camera.position.y = y;
+		camera.update();
+	}
+
 }

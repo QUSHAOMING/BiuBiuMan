@@ -6,7 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 
 public abstract class GameRole extends Actor {
-
+	public float currentX;
+	public float currentY;
 	protected Array<AtlasRegion> player;
 	
 	public GameRole() {

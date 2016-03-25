@@ -23,7 +23,6 @@ public abstract class GameMap2D extends GameMap {
 
 	@Override
 	public void drawMap(Batch batch) {
-		mapRenderer.render();
 	}
 
 	public TiledMapRenderer getMapRenderer() {
