@@ -2,8 +2,10 @@ package com.biubiuman.game.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.biubiuman.game.DirectedGame;
 import com.biubiuman.game.map.two.GrassMap;
 import com.biubiuman.game.role.Player;
+import com.biubiuman.game.screen.LoginScreen;
 import com.biubiuman.game.util.Constants;
 import com.biubiuman.game.util.MathUtil;
 
@@ -12,8 +14,8 @@ public class GroundBattleAction extends BattleAction {
 	public GroundBattleAction() {
 	}
 
-	public GroundBattleAction(int type) {
-		this.type = type;
+	public GroundBattleAction(int type, DirectedGame game) {
+		super(type, game);
 	}
 
 	@Override
@@ -30,7 +32,7 @@ public class GroundBattleAction extends BattleAction {
 			container.act();
 			container.draw();
 			setGravity();
-		}else{
+		} else {
 			Gdx.gl.glClearColor(0.3f, 0.3f, 0.2f, 1);
 			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 			System.out.println("Game over!");
@@ -38,14 +40,14 @@ public class GroundBattleAction extends BattleAction {
 	}
 
 	public void setGravity() {
-			if (player != null
-					&& MathUtil.downEnable(player.currentX, player.currentY,
-							barriers, player.getWidth(), player.getHeight())) {
-				player.currentY -= 10;
-			}
+		if (player != null
+				&& MathUtil.downEnable(player.currentX, player.currentY,
+						barriers, player.getWidth(), player.getHeight())) {
+			player.currentY -= 10;
+		}
 	}
-	
-	public boolean isGameOver(){
+
+	public boolean isGameOver() {
 		return MathUtil.collideTheBorder(player.currentX, player.currentY,
 				barriers, player.getWidth(), player.getHeight());
 	}

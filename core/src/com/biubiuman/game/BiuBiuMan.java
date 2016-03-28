@@ -53,7 +53,7 @@ public class BiuBiuMan extends DirectedGame {
 		// }
 		// });
 
-		setScreen(new GroundBattleAction(Constants.GROUND_GRASS));
+		setScreen(new GroundBattleAction(Constants.GROUND_GRASS,this));
 		// host = "192.168.0.120";
 		// port = 18181;
 		// new Thread(new Runnable() {

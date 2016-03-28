@@ -12,6 +12,7 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
+import com.biubiuman.game.DirectedGame;
 import com.biubiuman.game.asset.AssetLoader;
 import com.biubiuman.game.builder.helper.CameraHelper;
 import com.biubiuman.game.map.GameMap;
@@ -30,6 +31,15 @@ public abstract class BattleAction implements Screen {
 	protected GameMap map;
 	protected boolean pause;
 	protected int[][] barriers;
+	protected DirectedGame game;
+
+	public BattleAction() {
+	}
+
+	public BattleAction(int type, DirectedGame game) {
+		this.type = type;
+		this.game = game;
+	}
 
 	@Override
 	public void show() {
@@ -117,10 +127,10 @@ public abstract class BattleAction implements Screen {
 				}
 			}
 		}
-		
+
 		for (int x = 0; x < Constants.MAX_HEIGHT; x++) {
 			for (int y = 0; y < Constants.MAX_WIDTH; y++) {
-				System.out.print(barriers[x][y] +" ");
+				System.out.print(barriers[x][y] + " ");
 			}
 			System.out.println();
 		}
