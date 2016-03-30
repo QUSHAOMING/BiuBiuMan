@@ -8,33 +8,26 @@ import com.badlogic.gdx.math.Vector2;
 public class MathUtil {
 
 	//
-	public static boolean passEnable(float x, float y, int[][] barriers,
-			float width, float height) {
-		// +0.5
-		int col = MathUtils.round(y / width);
-		int row = MathUtils.round(x / height);
-		boolean flag = barriers[col][row] == 0;
-		return flag;
+	public static int passEnable(float x, float y, int[][] barriers, float width, float height) {
+		if ((barriers[(int) (y / height)][(int) (x / width)] == 1)) {
+			return 1;
+		} else if ((barriers[(int) (y / height)][(int) (x / width + 1)] == 1)) {
+			return 2;
+		} else if ((barriers[(int) (y / height + 1)][(int) (x / width)] == 1)) {
+			return 3;
+		} else if ((barriers[(int) (y / height -0.1f)][(int) (x / width)] == 1)) {
+			return 4;
+		}
+		return 0;
 	}
 
-	//
-	public static boolean downEnable(float x, float y, int[][] barriers,
-			float width, float height) {
-		// +0.5
-		boolean flag = barriers[(int) ((y / height - 0.1f))][(int) (x / width + 0.5f)] == 0;
-		return flag;
-	}
-
-	public static boolean collideTheBorder(float x, float y, int[][] barriers,
-			float width, float height) {
-		if ((barriers[(int) (y / height)][(int) (x / width - 0.1f)] == 1 && (int) (x
-				/ width - 0.1f) == 0)
-				|| (barriers[(int) (y / height)][(int) (x / width + 1 + 0.1f)] == 1 && (int) (x
-						/ width + 1 + 0.1f) == Constants.MAX_WIDTH - 1)
-				|| (barriers[(int) (y / height - 0.1f)][(int) (x / width)] == 1 && (int) (y
-						/ height - 0.1f) == 0)
-				|| (barriers[(int) (y / height + 1 + 0.1f)][(int) (x / width)] == 1 && (int) (y
-						/ height + 1 + 0.1f) == Constants.MAX_HEIGHT - 1)) {
+	public static boolean collideTheBorder(float x, float y, int[][] barriers, float width, float height) {
+		if ((barriers[(int) (y / height)][(int) (x / width - 0.1f)] == 1 && (int) (x / width - 0.1f) == 0)
+				|| (barriers[(int) (y / height)][(int) (x / width + 1 + 0.1f)] == 1
+						&& (int) (x / width + 1 + 0.1f) == Constants.MAX_WIDTH - 1)
+				|| (barriers[(int) (y / height - 0.1f)][(int) (x / width)] == 1 && (int) (y / height - 0.1f) == 0)
+				|| (barriers[(int) (y / height + 1 + 0.1f)][(int) (x / width)] == 1
+						&& (int) (y / height + 1 + 0.1f) == Constants.MAX_HEIGHT - 1)) {
 			return true;
 		}
 		return false;

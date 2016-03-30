@@ -32,6 +32,10 @@ public class GroundBattleAction extends BattleAction {
 			container.act();
 			container.draw();
 			setGravity();
+<<<<<<< Updated upstream
+=======
+			setCollision();
+>>>>>>> Stashed changes
 		} else {
 			Gdx.gl.glClearColor(0.3f, 0.3f, 0.2f, 1);
 			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -40,6 +44,7 @@ public class GroundBattleAction extends BattleAction {
 	}
 
 	public void setGravity() {
+<<<<<<< Updated upstream
 		if (player != null
 				&& MathUtil.downEnable(player.currentX, player.currentY,
 						barriers, player.getWidth(), player.getHeight())) {
@@ -50,5 +55,31 @@ public class GroundBattleAction extends BattleAction {
 	public boolean isGameOver() {
 		return MathUtil.collideTheBorder(player.currentX, player.currentY,
 				barriers, player.getWidth(), player.getHeight());
+=======
+		if (player != null) {
+			player.currentY -= 10;
+		}
+	}
+
+	public void setCollision() {
+		if (player != null) {
+			int collideIndex = MathUtil.passEnable(player.currentX, player.currentY, barriers, player.getWidth(),
+					player.getHeight());
+			if (collideIndex == 1) {
+				player.currentX += 10;
+			} else if (collideIndex == 2) {
+				player.currentX -= 10;
+			} else if (collideIndex == 3) {
+				player.currentY -= 10;
+			}else{
+				player.currentY += 10;
+			}
+		}
+	}
+
+	public boolean isGameOver() {
+		return MathUtil.collideTheBorder(player.currentX, player.currentY, barriers, player.getWidth(),
+				player.getHeight());
+>>>>>>> Stashed changes
 	}
 }

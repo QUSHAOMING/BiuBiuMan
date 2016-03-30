@@ -5,7 +5,7 @@
   <image source="../images/grounds.png" width="256" height="64"/>
  </tileset>
  <tileset firstgid="6" name="grounds" tilewidth="52" tileheight="50" tilecount="4" columns="4">
-  <image source="../../../desktop/bin/images/grounds.png" width="256" height="64"/>
+  <image source="../images/grounds.png" width="256" height="64"/>
  </tileset>
  <layer name="Map" width="50" height="40">
   <data encoding="csv">
